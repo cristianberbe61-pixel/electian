@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electian Bosques - Catálogo Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Iconos de FontAwesome para redes y botones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Encabezado Principal -->
+    <header class="hero-header">
+        <div class="header-overlay">
+            <h1 class="brand-title">ELECTIAN BOSQUES</h1>
+            <p class="brand-subtitle">Tecnología e Iluminación al mejor precio</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Panel para Agregar/Modificar Productos -->
+        <section class="admin-panel">
+            <h2><i class="fa-solid fa-plus-circle"></i> Agregar Nuevo Producto al Catálogo</h2>
+            <form id="product-form" class="product-form">
+                <div class="form-group">
+                    <label for="prod-title">Nombre del Producto:</label>
+                    <input type="text" id="prod-title" placeholder="Ej: Lámpara LED 12W" required>
+                </div>
+                <div class="form-group">
+                    <label for="prod-price">Precio ($):</label>
+                    <input type="number" id="prod-price" placeholder="Ej: 2500" required>
+                </div>
+                <div class="form-group">
+                    <label for="prod-img">URL de la Imagen (o carpeta gallery/):</label>
+                    <input type="text" id="prod-img" placeholder="gallery/producto1.jpg" required>
+                </div>
+                <button type="submit" class="btn-add-catalog">Agregar al Catálogo</button>
+            </form>
+        </section>
+
+        <!-- Galería de Productos (Gallery) -->
+        <section class="catalog-section">
+            <h2>Catálogo de Productos</h2>
+            <div id="gallery" class="gallery-grid">
+                <!-- Los productos agregados se mostrarán aquí dinámicamente -->
+            </div>
+        </section>
+
+        <!-- Carrito de Compras -->
+        <section class="cart-section" id="carrito">
+            <h2><i class="fa-solid fa-cart-shopping"></i> Tu Carrito de Compras</h2>
+            <div id="cart-items" class="cart-items">
+                <p class="empty-cart-msg">El carrito está vacío.</p>
+            </div>
+
+            <div class="cart-summary">
+                <div class="checkout-options">
+                    <!-- Formas de Pago -->
+                    <div class="option-group">
+                        <label for="payment-method"><i class="fa-solid fa-credit-card"></i> Forma de Pago:</label>
+                        <select id="payment-method">
+                            <option value="MercadoPago">MercadoPago</option>
+                            <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+                            <option value="Tarjeta de Débito">Tarjeta de Débito</option>
+                            <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                        </select>
+                    </div>
+
+                    <!-- Formas de Envío -->
+                    <div class="option-group">
+                        <label for="shipping-method"><i class="fa-solid fa-truck"></i> Método de Envío:</label>
+                        <select id="shipping-method">
+                            <option value="Retira en el local">Retira en el local</option>
+                            <option value="Envío a cargo del Comprador">Envío a cargo del Comprador</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="cart-total-box">
+                    <h3>Total: $<span id="cart-total">0</span></h3>
+                    <button id="checkout-btn" class="btn-checkout"><i class="fa-brands fa-whatsapp"></i> Finalizar Pedido por WhatsApp</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Botones Flotantes de Redes Sociales y WhatsApp -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/541167347088?text=Hola%20Electian%20Bosques,%20tengo%20una%20consulta" class="float-btn whatsapp" target="_blank" title="Consulta por WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/electian_bosques" class="float-btn instagram" target="_blank" title="Síguenos en Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61592749900763" class="float-btn facebook" target="_blank" title="Síguenos en Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+    </div>
+
+    <!-- Script en JS para gestionar la dinámica del catálogo y carrito -->
+    <script>
+        const gallery = document.getElementById('gallery');
+        const productForm = document.getElementById('product-form');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalDisplay = document.getElementById('cart-total');
+        const checkoutBtn = document.getElementById('checkout-btn');
+
+        let cart = [];
+
+        // Productos iniciales de ejemplo
+        let products = [
+            { id: 1, title: 'Producto Ejemplo 1', price: 1500, img: 'gallery/1anafeldobleelectrico.jpg' },
+            { id: 2, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/2anafelsimpleelectrico.jpg' }
+            { id: 3, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/3carritodecopras.jpg' }
+            { id: 4, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/4estopaconbalde.jpg' }
+            { id: 5, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/5extensoruniversal.jpg' }
+            { id: 6, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/6hornitoelectrico.jpg' }
+            { id: 7, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/7juegodamas.jpg' }
+            { id: 5, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/8juegodeludo.jpg' }
+            { id: 9, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/9picadoramanual.jpg' }
+            { id: 10, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/10liquadoraconmolinillo.jpg' }
+
+
+
+
+        ];
+
+        // Renderizar Catálogo
+        function renderGallery() {
+            gallery.innerHTML = '';
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.classList.add('product-card');
+                card.innerHTML = `
+                    <div class="img-container">
+                        <img src="${product.img}" alt="${product.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Electian+Bosques'">
+                    </div>
+                    <h3>${product.title}</h3>
+                    <div class="price-edit-group">
+                        <label>Precio: $</label>
+                        <input type="number" value="${product.price}" onchange="updatePrice(${product.id}, this.value)" class="input-price">
+                    </div>
+                    <button onclick="addToCart(${product.id})" class="btn-add-cart">Agregar al Carrito</button>
+                `;
+                gallery.appendChild(card);
+            });
+        }
+
+        // Agregar nuevo producto al catálogo
+        productForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('prod-title').value;
+            const price = parseFloat(document.getElementById('prod-price').value);
+            const img = document.getElementById('prod-img').value;
+
+            const newProduct = {
+                id: Date.now(),
+                title,
+                price,
+                img
+            };
+
+            products.push(newProduct);
+            renderGallery();
+            productForm.reset();
+        });
+
+        // Modificar Precio de Producto
+        function updatePrice(id, newPrice) {
+            const product = products.find(p => p.id === id);
+            if(product) {
+                product.price = parseFloat(newPrice) || 0;
+            }
+        }
+
+        // Agregar al Carrito
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const itemInCart = cart.find(item => item.id === id);
+
+            if (itemInCart) {
+                itemInCart.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            renderCart();
+        }
+
+        // Renderizar Carrito
+        function renderCart() {
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="empty-cart-msg">El carrito está vacío.</p>';
+                cartTotalDisplay.innerText = '0';
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+
+                const cartRow = document.createElement('div');
+                cartRow.classList.add('cart-row');
+                cartRow.innerHTML = `
+                    <span class="cart-title">${item.title}</span>
+                    <span class="cart-price">$${item.price}</span>
+                    <div class="cart-quantity-controls">
+                        <button onclick="changeQuantity(${item.id}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="changeQuantity(${item.id}, 1)">+</button>
+                    </div>
+                    <span class="cart-subtotal">$${subtotal}</span>
+                    <button onclick="removeFromCart(${item.id})" class="btn-remove"><i class="fa-solid fa-trash"></i></button>
+                `;
+                cartItemsContainer.appendChild(cartRow);
+            });
+
+            cartTotalDisplay.innerText = total;
+        }
+
+        // Cambiar cantidad
+        function changeQuantity(id, change) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(id);
+                } else {
+                    renderCart();
+                }
+            }
+        }
+
+        // Eliminar del carrito
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            renderCart();
+        }
+
+        // Enviar pedido por WhatsApp
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío.');
+                return;
+            }
+
+            const payment = document.getElementById('payment-method').value;
+            const shipping = document.getElementById('shipping-method').value;
+            const total = cartTotalDisplay.innerText;
+
+            let message = `*Nuevo Pedido - Electian Bosques*\n\n`;
+            message += `*Productos:*\n`;
+            cart.forEach(item => {
+                message += `- ${item.title} x${item.quantity} ($${item.price} c/u) = $${item.price * item.quantity}\n`;
+            });
+            message += `\n*Forma de Pago:* ${payment}`;
+            message += `\n*Forma de Envío:* ${shipping}`;
+            message += `\n*Total a Pagar:* $${total}`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/541167347088?text=${encodedMessage}`, '_blank');
+        });
+
+        // Inicializar la vista
+        renderGallery();
+    </script>
+</body>
+</html>
