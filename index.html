@@ -3,271 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electian Bosques - Catálogo Digital</title>
+    <title>Electian Bosques - Venta de Electrodomésticos</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Iconos de FontAwesome para redes y botones -->
+    <!-- Iconos de FontAwesome para botones de redes y pago -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fuente de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Encabezado Principal -->
-    <header class="hero-header">
-        <div class="header-overlay">
-            <h1 class="brand-title">ELECTIAN BOSQUES</h1>
-            <p class="brand-subtitle">Tecnología e Iluminación al mejor precio</p>
+    <!-- Encabezado / Navbar -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="brand-info">
+                <img src="logo1.jpg" alt="Logo Electian Bosques" class="nav-logo">
+                <div class="brand-text">
+                    <span class="brand-title">Electian Bosques</span>
+                    <span class="brand-subtitle">Venta de Electrodomésticos</span>
+                </div>
+            </div>
+
+            <!-- Botones de Redes Sociales Header -->
+            <div class="header-socials">
+                <a href="https://www.facebook.com/profile.php?id=61592749900763" target="_blank" class="social-btn facebook" title="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/electian_bosques" target="_blank" class="social-btn instagram" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/541167347088?text=Hola!%20Quiero%20consultar%20el%20cat%C3%A1logo%20de%20electrodom%C3%A9sticos" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
         </div>
     </header>
 
-    <main class="container">
-
-        <!-- Panel para Agregar/Modificar Productos -->
-        <section class="admin-panel">
-            <h2><i class="fa-solid fa-plus-circle"></i> Agregar Nuevo Producto al Catálogo</h2>
-            <form id="product-form" class="product-form">
-                <div class="form-group">
-                    <label for="prod-title">Nombre del Producto:</label>
-                    <input type="text" id="prod-title" placeholder="Ej: Lámpara LED 12W" required>
-                </div>
-                <div class="form-group">
-                    <label for="prod-price">Precio ($):</label>
-                    <input type="number" id="prod-price" placeholder="Ej: 2500" required>
-                </div>
-                <div class="form-group">
-                    <label for="prod-img">URL de la Imagen (o carpeta gallery/):</label>
-                    <input type="text" id="prod-img" placeholder="gallery/producto1.jpg" required>
-                </div>
-                <button type="submit" class="btn-add-catalog">Agregar al Catálogo</button>
-            </form>
-        </section>
-
-        <!-- Galería de Productos (Gallery) -->
-        <section class="catalog-section">
-            <h2>Catálogo de Productos</h2>
-            <div id="gallery" class="gallery-grid">
-                <!-- Los productos agregados se mostrarán aquí dinámicamente -->
-            </div>
-        </section>
-
-        <!-- Carrito de Compras -->
-        <section class="cart-section" id="carrito">
-            <h2><i class="fa-solid fa-cart-shopping"></i> Tu Carrito de Compras</h2>
-            <div id="cart-items" class="cart-items">
-                <p class="empty-cart-msg">El carrito está vacío.</p>
+    <!-- Banner Principal / Hero -->
+    <section class="hero">
+        <div class="container hero-container">
+            <!-- Logotipo Destacado al Inicio -->
+            <div class="main-logo-wrapper">
+                <img src="logo1.jpg" alt="Electian Bosques Logo Principal" class="main-logo">
             </div>
 
-            <div class="cart-summary">
-                <div class="checkout-options">
-                    <!-- Formas de Pago -->
-                    <div class="option-group">
-                        <label for="payment-method"><i class="fa-solid fa-credit-card"></i> Forma de Pago:</label>
-                        <select id="payment-method">
-                            <option value="MercadoPago">MercadoPago</option>
-                            <option value="Transferencia Bancaria">Transferencia Bancaria</option>
-                            <option value="Tarjeta de Débito">Tarjeta de Débito</option>
-                            <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
-                        </select>
-                    </div>
+            <h1>Electian Bosques</h1>
+            <h2>Venta de Electrodomésticos</h2>
+            <p class="hero-desc">Encontrá las mejores ofertas, combos y equipamiento para tu hogar con envío rápido y pagos seguros.</p>
+            
+            <div class="hero-actions">
+                <a href="https://wa.me/541167347088?text=Hola!%20Quiero%20asesoramiento%20para%20comprar" target="_blank" class="btn btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
+                </a>
+                <a href="#mercadopago" class="btn btn-mp">
+                    <i class="fa-solid fa-credit-card"></i> Formas de Pago MercadoPago
+                </a>
+            </div>
+        </div>
+    </section>
 
-                    <!-- Formas de Envío -->
-                    <div class="option-group">
-                        <label for="shipping-method"><i class="fa-solid fa-truck"></i> Método de Envío:</label>
-                        <select id="shipping-method">
-                            <option value="Retira en el local">Retira en el local</option>
-                            <option value="Envío a cargo del Comprador">Envío a cargo del Comprador</option>
-                        </select>
-                    </div>
-                </div>
+    <!-- Sección de Catálogo de Productos -->
+    <section class="catalog-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>Catálogo de Productos</h3>
+                <p>Elegí tu producto y realizá tu pedido directamente por WhatsApp o MercadoPago</p>
+            </div>
 
-                <div class="cart-total-box">
-                    <h3>Total: $<span id="cart-total">0</span></h3>
-                    <button id="checkout-btn" class="btn-checkout"><i class="fa-brands fa-whatsapp"></i> Finalizar Pedido por WhatsApp</button>
+            <!-- Grilla de Productos (Estructura editable según tu Excel) -->
+            <div class="product-grid">
+
+                <!-- Producto 1 -->
+                <article class="product-card">
+                    <div class="product-badge">Destacado</div>
+                    <div class="product-img-wrapper">
+                        <img src="logo1.jpg" alt="Lavarropas Automático" class="product-img">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-category">Lavado</span>
+                        <h4 class="product-title">Lavarropas Automático 6kg</h4>
+                        <p class="product-desc">Carga frontal, múltiples programas de lavado, eficiencia energética A++.</p>
+                        <div class="product-price">
+                            <span class="price-current">$349.999</span>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="https://wa.me/541167347088?text=Hola!%20Me%20interesa%20el%20Lavarropas%20Autom%C3%A1tico%206kg" target="_blank" class="btn-card btn-card-wa">
+                                <i class="fa-brands fa-whatsapp"></i> Comprar
+                            </a>
+                            <a href="https://mpago.la/tu-link-de-pago" target="_blank" class="btn-card btn-card-mp">
+                                <i class="fa-solid fa-bolt"></i> MercadoPago
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="product-card">
+                    <div class="product-badge offer">Oferta</div>
+                    <div class="product-img-wrapper">
+                        <img src="logo1.jpg" alt="Heladera No Frost" class="product-img">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-category">Refrigeración</span>
+                        <h4 class="product-title">Heladera No Frost con Freezer</h4>
+                        <p class="product-desc">Capacidad 320L, freezer superior, estantes regulables de vidrio templado.</p>
+                        <div class="product-price">
+                            <span class="price-current">$489.900</span>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="https://wa.me/541167347088?text=Hola!%20Me%20interesa%20la%20Heladera%20No%20Frost" target="_blank" class="btn-card btn-card-wa">
+                                <i class="fa-brands fa-whatsapp"></i> Comprar
+                            </a>
+                            <a href="https://mpago.la/tu-link-de-pago" target="_blank" class="btn-card btn-card-mp">
+                                <i class="fa-solid fa-bolt"></i> MercadoPago
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="product-card">
+                    <div class="product-badge">Popular</div>
+                    <div class="product-img-wrapper">
+                        <img src="logo1.jpg" alt="Smart TV 43 Pulgadas" class="product-img">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-category">Televisión</span>
+                        <h4 class="product-title">Smart TV 43" Full HD</h4>
+                        <p class="product-desc">Con Netflix, YouTube, Prime Video, Wi-Fi integrado y comando de voz.</p>
+                        <div class="product-price">
+                            <span class="price-current">$279.000</span>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="https://wa.me/541167347088?text=Hola!%20Me%20interesa%20el%20Smart%20TV%2043" target="_blank" class="btn-card btn-card-wa">
+                                <i class="fa-brands fa-whatsapp"></i> Comprar
+                            </a>
+                            <a href="https://mpago.la/tu-link-de-pago" target="_blank" class="btn-card btn-card-mp">
+                                <i class="fa-solid fa-bolt"></i> MercadoPago
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 4 -->
+                <article class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="logo1.jpg" alt="Aire Acondicionado Split" class="product-img">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-category">Climatización</span>
+                        <h4 class="product-title">Aire Acondicionado Frío/Calor</h4>
+                        <p class="product-desc">3000 frigorías, silencioso, función eco y control remoto digital.</p>
+                        <div class="product-price">
+                            <span class="price-current">$520.000</span>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="https://wa.me/541167347088?text=Hola!%20Me%20interesa%20el%20Aire%20Acondicionado" target="_blank" class="btn-card btn-card-wa">
+                                <i class="fa-brands fa-whatsapp"></i> Comprar
+                            </a>
+                            <a href="https://mpago.la/tu-link-de-pago" target="_blank" class="btn-card btn-card-mp">
+                                <i class="fa-solid fa-bolt"></i> MercadoPago
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 5 -->
+                <article class="product-card">
+                    <div class="product-badge offer">Oferta</div>
+                    <div class="product-img-wrapper">
+                        <img src="logo1.jpg" alt="Microondas Digital" class="product-img">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-category">Cocina</span>
+                        <h4 class="product-title">Microondas Digital 20 Litros</h4>
+                        <p class="product-desc">Descongelado automático, grill incorporado y panel táctil intuitivo.</p>
+                        <div class="product-price">
+                            <span class="price-current">$115.000</span>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="https://wa.me/541167347088?text=Hola!%20Me%20interesa%20el%20Microondas%20Digital" target="_blank" class="btn-card btn-card-wa">
+                                <i class="fa-brands fa-whatsapp"></i> Comprar
+                            </a>
+                            <a href="https://mpago.la/tu-link-de-pago" target="_blank" class="btn-card btn-card-mp">
+                                <i class="fa-solid fa-bolt"></i> MercadoPago
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 6 -->
+                <article class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="logo1.jpg" alt="Freidora de Aire Sin Aceite" class="product-img">
+                    </div>
+                    <div class="product-details">
+                        <span class="product-category">Pequeños Electro</span>
+                        <h4 class="product-title">Freidora de Aire Airfryer 4.5L</h4>
+                        <p class="product-desc">Cocina saludable sin aceite, temporizador y control de temperatura.</p>
+                        <div class="product-price">
+                            <span class="price-current">$89.900</span>
+                        </div>
+                        <div class="product-buttons">
+                            <a href="https://wa.me/541167347088?text=Hola!%20Me%20interesa%20la%20Freidora%20de%20Aire" target="_blank" class="btn-card btn-card-wa">
+                                <i class="fa-brands fa-whatsapp"></i> Comprar
+                            </a>
+                            <a href="https://mpago.la/tu-link-de-pago" target="_blank" class="btn-card btn-card-mp">
+                                <i class="fa-solid fa-bolt"></i> MercadoPago
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Información de MercadoPago -->
+    <section id="mercadopago" class="mp-banner">
+        <div class="container mp-container">
+            <div class="mp-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="mp-info">
+                <h3>Aboná de forma 100% segura con MercadoPago</h3>
+                <p>Aceptamos tarjetas de crédito, débito, dinero en cuenta y transferencias bancarias directas.</p>
+            </div>
+            <div class="mp-action">
+                <a href="https://mpago.la/tu-link-de-pago" target="_blank" class="btn-mp-large">
+                    <i class="fa-solid fa-credit-card"></i> Pagar con MercadoPago
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página / Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="logo1.jpg" alt="Logo Electian Bosques" class="footer-logo">
+                <h4>Electian Bosques</h4>
+                <p>Venta de electrodomésticos y equipamiento para el hogar al mejor precio de la zona.</p>
+            </div>
+
+            <div class="footer-contact">
+                <h5>Contacto Directo</h5>
+                <p><i class="fa-solid fa-phone"></i> +54 11 6734-7088</p>
+                <p><i class="fa-solid fa-location-dot"></i> Bosques, Buenos Aires</p>
+            </div>
+
+            <div class="footer-socials">
+                <h5>Nuestras Redes</h5>
+                <div class="social-links-list">
+                    <a href="https://www.facebook.com/profile.php?id=61592749900763" target="_blank" class="footer-social-link fb">
+                        <i class="fa-brands fa-facebook-f"></i> Facebook
+                    </a>
+                    <a href="https://www.instagram.com/electian_bosques" target="_blank" class="footer-social-link ig">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://wa.me/541167347088" target="_blank" class="footer-social-link wa">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </a>
                 </div>
             </div>
-        </section>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Electian Bosques - Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
-    </main>
+    <!-- Botón Flotante Permanente de WhatsApp -->
+    <a href="https://wa.me/541167347088?text=Hola!%20Quiero%20consultar%20por%20los%20electrodom%C3%A9sticos" class="whatsapp-float" target="_blank" aria-label="WhatsApp Directo">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-    <!-- Botones Flotantes de Redes Sociales y WhatsApp -->
-    <div class="floating-buttons">
-        <a href="https://wa.me/541167347088?text=Hola%20Electian%20Bosques,%20tengo%20una%20consulta" class="float-btn whatsapp" target="_blank" title="Consulta por WhatsApp">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <a href="https://www.instagram.com/electian_bosques" class="float-btn instagram" target="_blank" title="Síguenos en Instagram">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="https://www.facebook.com/profile.php?id=61592749900763" class="float-btn facebook" target="_blank" title="Síguenos en Facebook">
-            <i class="fa-brands fa-facebook-f"></i>
-        </a>
-    </div>
-
-    <!-- Script en JS para gestionar la dinámica del catálogo y carrito -->
-    <script>
-        const gallery = document.getElementById('gallery');
-        const productForm = document.getElementById('product-form');
-        const cartItemsContainer = document.getElementById('cart-items');
-        const cartTotalDisplay = document.getElementById('cart-total');
-        const checkoutBtn = document.getElementById('checkout-btn');
-
-        let cart = [];
-
-        // Productos iniciales de ejemplo
-        let products = [
-            { id: 1, title: 'Producto Ejemplo 1', price: 1500, img: 'gallery/1anafeldobleelectrico.jpg' },
-            { id: 2, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/2anafelsimpleelectrico.jpg' }
-            { id: 3, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/3carritodecopras.jpg' }
-            { id: 4, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/4estopaconbalde.jpg' }
-            { id: 5, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/5extensoruniversal.jpg' }
-            { id: 6, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/6hornitoelectrico.jpg' }
-            { id: 7, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/7juegodamas.jpg' }
-            { id: 5, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/8juegodeludo.jpg' }
-            { id: 9, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/9picadoramanual.jpg' }
-            { id: 10, title: 'Producto Ejemplo 2', price: 3200, img: 'gallery/10liquadoraconmolinillo.jpg' }
-
-
-
-
-        ];
-
-        // Renderizar Catálogo
-        function renderGallery() {
-            gallery.innerHTML = '';
-            products.forEach(product => {
-                const card = document.createElement('div');
-                card.classList.add('product-card');
-                card.innerHTML = `
-                    <div class="img-container">
-                        <img src="${product.img}" alt="${product.title}" onerror="this.src='https://via.placeholder.com/300x200?text=Electian+Bosques'">
-                    </div>
-                    <h3>${product.title}</h3>
-                    <div class="price-edit-group">
-                        <label>Precio: $</label>
-                        <input type="number" value="${product.price}" onchange="updatePrice(${product.id}, this.value)" class="input-price">
-                    </div>
-                    <button onclick="addToCart(${product.id})" class="btn-add-cart">Agregar al Carrito</button>
-                `;
-                gallery.appendChild(card);
-            });
-        }
-
-        // Agregar nuevo producto al catálogo
-        productForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const title = document.getElementById('prod-title').value;
-            const price = parseFloat(document.getElementById('prod-price').value);
-            const img = document.getElementById('prod-img').value;
-
-            const newProduct = {
-                id: Date.now(),
-                title,
-                price,
-                img
-            };
-
-            products.push(newProduct);
-            renderGallery();
-            productForm.reset();
-        });
-
-        // Modificar Precio de Producto
-        function updatePrice(id, newPrice) {
-            const product = products.find(p => p.id === id);
-            if(product) {
-                product.price = parseFloat(newPrice) || 0;
-            }
-        }
-
-        // Agregar al Carrito
-        function addToCart(id) {
-            const product = products.find(p => p.id === id);
-            const itemInCart = cart.find(item => item.id === id);
-
-            if (itemInCart) {
-                itemInCart.quantity++;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
-            renderCart();
-        }
-
-        // Renderizar Carrito
-        function renderCart() {
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p class="empty-cart-msg">El carrito está vacío.</p>';
-                cartTotalDisplay.innerText = '0';
-                return;
-            }
-
-            cartItemsContainer.innerHTML = '';
-            let total = 0;
-
-            cart.forEach(item => {
-                const subtotal = item.price * item.quantity;
-                total += subtotal;
-
-                const cartRow = document.createElement('div');
-                cartRow.classList.add('cart-row');
-                cartRow.innerHTML = `
-                    <span class="cart-title">${item.title}</span>
-                    <span class="cart-price">$${item.price}</span>
-                    <div class="cart-quantity-controls">
-                        <button onclick="changeQuantity(${item.id}, -1)">-</button>
-                        <span>${item.quantity}</span>
-                        <button onclick="changeQuantity(${item.id}, 1)">+</button>
-                    </div>
-                    <span class="cart-subtotal">$${subtotal}</span>
-                    <button onclick="removeFromCart(${item.id})" class="btn-remove"><i class="fa-solid fa-trash"></i></button>
-                `;
-                cartItemsContainer.appendChild(cartRow);
-            });
-
-            cartTotalDisplay.innerText = total;
-        }
-
-        // Cambiar cantidad
-        function changeQuantity(id, change) {
-            const item = cart.find(i => i.id === id);
-            if (item) {
-                item.quantity += change;
-                if (item.quantity <= 0) {
-                    removeFromCart(id);
-                } else {
-                    renderCart();
-                }
-            }
-        }
-
-        // Eliminar del carrito
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            renderCart();
-        }
-
-        // Enviar pedido por WhatsApp
-        checkoutBtn.addEventListener('click', () => {
-            if (cart.length === 0) {
-                alert('Tu carrito está vacío.');
-                return;
-            }
-
-            const payment = document.getElementById('payment-method').value;
-            const shipping = document.getElementById('shipping-method').value;
-            const total = cartTotalDisplay.innerText;
-
-            let message = `*Nuevo Pedido - Electian Bosques*\n\n`;
-            message += `*Productos:*\n`;
-            cart.forEach(item => {
-                message += `- ${item.title} x${item.quantity} ($${item.price} c/u) = $${item.price * item.quantity}\n`;
-            });
-            message += `\n*Forma de Pago:* ${payment}`;
-            message += `\n*Forma de Envío:* ${shipping}`;
-            message += `\n*Total a Pagar:* $${total}`;
-
-            const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/541167347088?text=${encodedMessage}`, '_blank');
-        });
-
-        // Inicializar la vista
-        renderGallery();
-    </script>
 </body>
 </html>
+ 
